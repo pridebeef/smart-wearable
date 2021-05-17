@@ -19,15 +19,17 @@ Wiring is following the SPI pins as shown on the board after getting power and g
 * PlatformIO
 
 ## Build Instructions (Software)
-Should be pretty easy.  
+Should be pretty easy.  Hopefully.  
+  
 **Client:**  
 Change `client/wifi_config.h` to have your SSID and password in it.  
-`pio run -t upload` with your board plugged into the computer, or however the non-CLI PlatformIO tools work.
+`pio run -t upload` with your board plugged into the computer, or however the non-CLI PlatformIO tools work.  
+  
 **Server:**
-`cd` into the server folder and `rustup set override nightly` as per Rocket's requirements for the web server, then `cargo run` and visit the URL in the browser. The Rocket config should run it on `0.0.0.0` so it will be accessible on the local network.
-
+`cd` into the server folder and `rustup set override nightly` as per Rocket's requirements for the web server, then `cargo run` and visit the URL in the browser. The Rocket config should run it on `0.0.0.0` so it will be accessible on the local network.  
+  
 ## Usage
-After uploading the client code to the board and getting the webserver built, just visit the URL for the webserver on any device on the same network and enter the client IP in the box. Then the mode buttons should work. 
-
+After uploading the client code to the board and getting the webserver built, just visit the URL for the webserver on any device on the same network and enter the client IP in the box. Then the mode buttons should work.  
+  
 ## Troubleshooting
 Ensure that all the devices are on the same local network. 
