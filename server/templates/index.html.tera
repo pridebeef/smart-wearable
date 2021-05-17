@@ -1,0 +1,45 @@
+<!doctype html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+<script>
+// each button sends a get request as a link -> keep textbox IP filled 
+window.onload = function() {
+  if (sessionStorage.ip) {
+    document.getElementById("ip_entry").value = sessionStorage.ip;
+  }
+}
+function onsend(self) {
+  let addr = document.getElementById("ip_entry").value;
+  self.href += addr;
+  sessionStorage.ip = addr;
+  self.onsend = null;
+}
+</script>
+
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <div class="section">
+    <h1 class="title">Title</h1>
+
+    <div class="container is-max-desktop block">
+    Current mode: {% if mode %}{{mode}}{% else %}None{% endif %}
+    </div>
+
+    <div class="container is-max-desktop block">
+    <input class="input" id="ip_entry" type="text" placeholder="IP address and port; e.x. 192.168.1.x:5000">
+    </div>
+
+    <div class="container is-max-desktop">
+      {% for row in [0, 1, 2,] %}
+      <div class="columns is-mobile">
+        {% for col in [1, 2, 3] %}
+        <div class="column">
+          <a class="button is-large is-fullwidth is-primary" onclick="onsend(this)" href="/send?modecmd={{row * 3 + col}}&ip=">
+            {{row * 3 + col}}
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body> 
